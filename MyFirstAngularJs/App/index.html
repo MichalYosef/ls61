@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <style>
+        h3 {margin:10px 0;}
+        ul {
+            display:inline;
+            list-style-type:none;
+            padding:3;
+        }
+    </style>
+</head>
+<body style="font:17px Consolas;">
+
+    <!--THE VIEW.-->
+    <div ng-app="booksApp" ng-controller="myController"> <!--end of  ng-app="myApp"-->
+
+        <div style="float:left;padding:10px;margin:0 auto;">
+
+            <h3>Books List</h3>
+
+            <!-- LOOP.-->
+            <ul ng-repeat='(key, value) in list'>
+                <li>{{ value.name }} + ' - ' + {{(value.author)}} + ' - ' + 
+                    <!--<img src='images/' + (value.img)> }}-->
+                    <img ng-src="images/{{value.img}}" alt="book image"/>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div style="float:left;margin:30px;">
+            <input type="text" ng-model="name" placeholder="Enter the Book" /> -
+            <input type="text" ng-model="price" placeholder="Enter a Price" />
+
+            <p><button ng-click="add()">Add the Book</button></p>
+        </div> -->
+    </div>
+
+    <script>
+        var myModule = angular.module('booksApp',[]);
+        myModule.controller("myController", function addBook($scope)
+        {
+            $scope.list=[
+                            { name:'Computer Architecture', author: 'some author', img: "book1.jpg" }, 
+                            { name:'Advanced Composite Materials', author: 'some author2', img: "book2.jpg" }, 
+                            { name:'Stategies Unplugged',  author: 'some author3', img: "book3.png" }
+            ];
+            
+        });
+    
+    </script>
+</body>
